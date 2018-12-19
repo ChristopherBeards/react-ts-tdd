@@ -19,4 +19,9 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('h1').text()).toBe('Hello World!');
   });
+
+  it('renders a paragraph', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find('p').text()).toBe('Welcome to... the scary door!')
+  })
 })
