@@ -7,6 +7,7 @@ import '../setupTests';
 
 // Component
 import App from './App';
+import Heading from './Heading';
 
 describe('<App />', () => {
   it('renders without crashing', () => {
@@ -16,12 +17,8 @@ describe('<App />', () => {
   });
 
   it('renders the heading', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('h1').text()).toBe('Hello World!');
-  });
-
-  it('renders a paragraph', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('p').text()).toBe('Welcome to... the scary door!')
-  })
+    const wrapper = shallow(<Heading/>);
+    expect(wrapper.find('h1').text())
+        .toBe('Hello React');
+});
 })
