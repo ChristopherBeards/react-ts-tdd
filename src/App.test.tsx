@@ -17,7 +17,7 @@ describe('<App />', () => {
   });
 
   it('renders the heading', () => {
-    const wrapper = shallow(<Heading/>);
+    const wrapper = shallow(<Heading />);
     expect(wrapper.find('h1').text())
         .toBe('Hello React');
 });
