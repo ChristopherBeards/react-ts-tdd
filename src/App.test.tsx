@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
-// Test Setup 
+// Test Setup
 import '../setupTests';
 
 // Component
@@ -17,8 +17,25 @@ describe('<App />', () => {
   });
 
   it('renders the heading', () => {
-    const wrapper = shallow(<Heading />);
-    expect(wrapper.find('h1').text())
-        .toBe('Hello React');
+    const wrapper = mount(<App />);
+    expect(wrapper.find('h1').text()).toBe('Hello React');
+    expect(wrapper.find('.counter label').text()).toBe('Current');
+    expect(wrapper.find('.counter span').text()).toBe('0');
+  });
+
+  it('updates the state when clicked without shift', () => {
+    const wrapper = shallow(<App />);
+    const instance = wrapper.instance() as App;
+    expect(instance.state.count).toBe(0);
+    instance.increment(false);
+    expect(instance.state.count).toBe(1);
+  })
+
+  it('updates the state when clicked with shift', () => {
+    const wrapper = shallow(<App />);
+    const instance = wrapper.instance() as App;
+    expect(instance.state.count).toBe(0);
+    instance.increment(true);
+    expect(instance.state.count).toBe(10);
+  })
 });
-})
